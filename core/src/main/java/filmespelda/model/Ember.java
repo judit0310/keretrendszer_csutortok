@@ -3,21 +3,33 @@ package filmespelda.model;
 import filmespelda.exceptions.DateIsTooLate;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Ember {
+    private UUID id;
     private String vezeteknev;
     private String keresztnev;
     private LocalDate szuletesi_datum;
 
 
     public Ember() {
+        this.id = UUID.randomUUID();
     }
 
     public Ember(String vezeteknev, String keresztnev,
                  LocalDate szuletesi_datum) throws DateIsTooLate {
+        this.id = UUID.randomUUID();
         this.vezeteknev = vezeteknev;
         this.keresztnev = keresztnev;
         setSzuletesi_datum(szuletesi_datum);
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getVezeteknev() {
