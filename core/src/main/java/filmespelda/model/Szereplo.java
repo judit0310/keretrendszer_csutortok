@@ -18,6 +18,8 @@ public class Szereplo extends Ember {
         this.karakter_neve = karakter_neve;
     }
 
+
+
     public String getKarakter_neve() {
         return karakter_neve;
     }
