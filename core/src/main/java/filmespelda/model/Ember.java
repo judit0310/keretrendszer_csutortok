@@ -59,4 +59,7 @@ public class Ember {
         this.szuletesi_datum = szuletesi_datum;
 
     }
+
+
+
 }

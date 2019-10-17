@@ -27,4 +27,7 @@ public class Szereplo extends Ember {
     public void setKarakter_neve(String karakter_neve) {
         this.karakter_neve = karakter_neve;
     }
+
+
+
 }

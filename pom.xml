@@ -11,6 +11,8 @@
         <module>core</module>
         <module>service</module>
         <module>dao-json</module>
+        <module>controller</module>
+        <module>web</module>
     </modules>
     <packaging>pom</packaging>
 
