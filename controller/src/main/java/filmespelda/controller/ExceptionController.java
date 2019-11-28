@@ -5,6 +5,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -39,6 +40,12 @@ public class ExceptionController{
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String mewthod(Exception e){
         return "Method is incorrect" ;
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseBody
+    public String jsonmappingexception(Exception e){
+        return e.getLocalizedMessage();
     }
 
 }
