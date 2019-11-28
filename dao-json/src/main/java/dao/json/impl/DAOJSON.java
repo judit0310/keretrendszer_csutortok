@@ -1,8 +1,11 @@
 package dao.json.impl;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.sun.tracing.dtrace.ArgsAttributes;
 import dao.SzereploDAO;
 import filmespelda.exceptions.NoMatchingID;
 import filmespelda.model.Szereplo;
@@ -83,7 +86,22 @@ public class DAOJSON implements SzereploDAO {
 
     }
 
-    public void delete(Szereplo szereplo) {
+    public void delete(Szereplo szereplo) throws NoMatchingID {
+        Collection<Szereplo> szereplok =readAllSzereplo();
+        Collection<Szereplo> result= new ArrayList<>();
+        try {
+            Szereplo torlendo = readSzereploById(szereplo.getId());
+            for(Szereplo sz : szereplok){
+                if(! (sz.getId() == torlendo.getId())){
+                    result.add(sz);
+                }
+            }
+            mapper.writeValue(jsonFile, result);
+        } catch (NoMatchingID noMatchingID) {
+            throw noMatchingID;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

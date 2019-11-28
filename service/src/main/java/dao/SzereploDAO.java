@@ -13,7 +13,7 @@ public interface SzereploDAO {
 
     public void updateSzereplo(Szereplo szereplo);
 
-    public void delete(Szereplo szereplo);
+    public void delete(Szereplo szereplo) throws NoMatchingID;
 
     public Szereplo readSzereploById(UUID id) throws NoMatchingID;
 
